@@ -577,7 +577,60 @@ if(errs[0]&&errs[0].focus)errs[0].focus();return!errs.length}
 function buildPayload(){const s=S[R.sid],ref='REQ-2026-'+String((Date.now()%9000)+Math.floor(Math.random()*1000)).padStart(4,'0');
 return{ref,createdAt:new Date().toISOString(),source:'portfolio',project:R.proj||null,service:{id:R.sid,title:s.t,field:s.f},client:{name:R.c.name,company:R.c.brand,whatsapp:R.c.wa,countryTimezone:R.c.tz,website:R.c.site||''},answers:groups().flatMap(([n,j,r])=>r.map(([q,a])=>({step:n,question:q,answer:a}))),budget:R.bud,timeline:{needed:R.tl,targetDate:R.tdate||'',constraint:R.tfix||''},contact:{method:R.cm||'WhatsApp',whatsapp:R.c.wa,email:R.cm==='Email'?R.cem:''},extra:R.extra||'',files:FILES.map(x=>({name:x.file.name,size:x.file.size,type:x.file.type}))}}
 const briefText=p=>[`طلب مشروع ${p.ref}`,`الخدمة: ${p.service.title}`,p.project&&`المشروع: ${p.project.title}`,`العميل: ${p.client.name} / ${p.client.company}`,`واتساب: ${p.client.whatsapp}`,`الدولة / المنطقة الزمنية: ${p.client.countryTimezone}`,p.client.website&&`الروابط: ${p.client.website}`,'',...p.answers.map(a=>`${a.question}: ${a.answer}`),'',`الميزانية: ${p.budget}`,`الموعد: ${p.timeline.needed}${p.timeline.targetDate?' (حتى '+p.timeline.targetDate+')':''}`,p.timeline.constraint&&`ملاحظة الموعد: ${p.timeline.constraint}`,p.files.length&&`ملفات سيتم إرسالها: ${p.files.map(f=>f.name).join('، ')}`,p.extra&&`ملاحظات: ${p.extra}`,`الرد عبر: ${p.contact.method}${p.contact.email?' ('+p.contact.email+')':''}`].filter(x=>x!==''&&x!==undefined&&x!==null&&x!==false).join('\n');
-function sendReq(p){if(!REQUEST_ENDPOINT)return Promise.resolve({ok:false,reason:'no-endpoint'});return new Promise(res=>{const fd=new FormData();fd.append('payload',JSON.stringify(p));FILES.forEach(x=>fd.append('files',x.file,x.file.name));const x=new XMLHttpRequest();x.open('POST',REQUEST_ENDPOINT);x.upload.onprogress=e=>{const b=$('#up i');if(b&&e.lengthComputable)b.style.width=Math.round(e.loaded/e.total*100)+'%'};x.onload=()=>{try{const j=JSON.parse(x.responseText);res(x.status<300&&j.ok?{ok:true,ref:j.ref||p.ref}:{ok:false,reason:'server'})}catch(e){res({ok:false,reason:'server'})}};x.onerror=()=>res({ok:false,reason:'network'});x.send(fd)})}
+function sendReq(p){
+  const AI_ENDPOINT='https://ai-backend-psi-rouge.vercel.app/api/chat';
+
+  return new Promise(async res=>{
+    try{
+      const prompt=`
+أنت المساعد الذكي لموقع محمد مصطفى، مصمم جرافيك وفيديو إيديتور ومطور ويب.
+
+حلل طلب العميل التالي:
+${JSON.stringify(p,null,2)}
+
+أرجع تحليلاً مختصراً بالعربية يتضمن:
+1. فهمك للمشروع.
+2. المتطلبات الأساسية.
+3. أي معلومات ناقصة يحتاجها محمد.
+4. الخطوة التالية المقترحة.
+
+لا تخترع أسعاراً أو مواعيد أو خدمات غير موجودة في الطلب.
+      `;
+
+      const response=await fetch(AI_ENDPOINT,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({prompt})
+      });
+
+      const data=await response.json();
+
+      if(!response.ok){
+        return res({ok:false,reason:'server'});
+      }
+
+      const aiText=
+        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        data?.text ||
+        'تم تحليل الطلب بنجاح.';
+
+      res({
+        ok:true,
+        ai:aiText,
+        ref:p.ref||null
+      });
+
+    }catch(e){
+      console.error(e);
+      res({
+        ok:false,
+        reason:'network'
+      });
+    }
+  });
+}
 async function doSubmit(){const btn=$('#nx');btn.disabled=true;btn.insertAdjacentHTML('afterend','<span class="pb" id="up" style="width:120px"><i></i></span>');btn.textContent='جارٍ الإرسال…';const p=buildPayload(),r=await sendReq(p);R.k=10;R.mx=10;result(p,r)}
 function result(p,r){const s=S[R.sid],t=briefText(p),wa='https://wa.me/'+WA+'?text='+encodeURIComponent(t.slice(0,1800)),em='mailto:'+EM+'?subject='+encodeURIComponent('Project request '+p.ref)+'&body='+encodeURIComponent(t.slice(0,1800));
 const ok=r.ok,ref=ok?r.ref:p.ref,msg=ok?'تم استلام ملخص مشروعك. سيرد عليك محمد عبر '+p.contact.method+'.':r.reason==='no-endpoint'?'هذا الموقع غير متصل بخادم بعد، لذلك <b>لم يتم تسليم أي شيء</b>. ملخصك جاهز، أرسله بأحد الأزرار أدناه.':'لم يقبل الخادم الطلب، لذلك <b>لم يتم تسليمه</b>. يمكنك المحاولة مجدداً أو إرسال الملخص مباشرة.';
