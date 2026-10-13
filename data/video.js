@@ -1,106 +1,63 @@
-/* ============================================================
-   قسم الفيديو (VIDEO)
-   كل مجموعة بين [ ] هي قسم فرعي. ضع مشروعك داخل القسم الصح فقط.
-   الحقول: title (إلزامي) + cover (إلزامي: صورة الغلاف)
-   اختيارية: year, client, description, challenge, direction, result,
-             deliverables ('شعار;ألوان;خطوط')، palette (٤ ألوان)، process (['بحث','فكرة','تصميم','تسليم'])،
-             gallery (صور/فيديوهات تظهر في قسم "العمل"): [{src:'...', caption:'...'}]
-   أي حقل تسيبه فاضي يختفي من الصفحة.
-   الصور في: images/video/<اسم-القسم-الفرعي>/<اسم-المشروع>/
-   ============================================================ */
+/* Portfolio concept projects for the empty video section. Replace with real work later. */
 window.VIDEO_PROJECTS = {
   'Video Editing': [
-    /* مثال، انسخه وعدّل: 
     {
-      title: 'اسم المشروع', year: '2026', client: 'اسم العميل',
-      description: 'جملة أو جملتين عن المشروع.',
-      challenge: 'ما المشكلة التي كان لازم تتحل؟',
-      direction: 'الفكرة والاتجاه البصري.',
-      result: 'النتيجة النهائية.',
-      deliverables: 'مخرج 1;مخرج 2;مخرج 3',
-      cover: 'images/video/video-editing/اسم-المشروع/cover.jpg',
-      video: 'videos/video/video-editing/اسم-المشروع.mp4',   // اختياري: يشتغل عند تمرير الماوس
-      poster: 'images/video/video-editing/اسم-المشروع/poster.jpg',
-      gallery: [
-        { src: 'images/video/video-editing/اسم-المشروع/01.jpg', caption: 'وصف' }
-      ]
-    },
-    */
+      title: 'SCENE / 05 — Video Editing', year: '2026', client: 'Portfolio Concept',
+      description: 'A cinematic edit direction built around pacing, clean cuts, sound rhythm and controlled color.',
+      challenge: 'Turn raw footage into a focused short-form story without overloading the frame.',
+      direction: 'Editorial pacing, restrained typography and a dark cinematic grade.',
+      result: 'A polished editing concept designed for reels, campaigns and commercial content.',
+      deliverables: 'Final edit;Short cutdowns;Color grade;Sound design',
+      cover: 'images/video/video-editing/cover.svg',
+      gallery: [{src:'images/video/video-editing/cover.svg',caption:'Video editing concept — temporary portfolio presentation'}]
+    }
   ],
-
   'Motion Graphics': [
-    /* مثال، انسخه وعدّل: 
     {
-      title: 'اسم المشروع', year: '2026', client: 'اسم العميل',
-      description: 'جملة أو جملتين عن المشروع.',
-      challenge: 'ما المشكلة التي كان لازم تتحل؟',
-      direction: 'الفكرة والاتجاه البصري.',
-      result: 'النتيجة النهائية.',
-      deliverables: 'مخرج 1;مخرج 2;مخرج 3',
-      cover: 'images/video/motion-graphics/اسم-المشروع/cover.jpg',
-      video: 'videos/video/motion-graphics/اسم-المشروع.mp4',   // اختياري: يشتغل عند تمرير الماوس
-      poster: 'images/video/motion-graphics/اسم-المشروع/poster.jpg',
-      gallery: [
-        { src: 'images/video/motion-graphics/اسم-المشروع/01.jpg', caption: 'وصف' }
-      ]
-    },
-    */
+      title: 'PACE / 02 — Motion Graphics', year: '2026', client: 'Portfolio Concept',
+      description: 'A motion system combining kinetic typography, modular shapes and precise timing.',
+      challenge: 'Create movement that communicates hierarchy without distracting from the message.',
+      direction: 'Geometric transitions, bold type and a controlled electric accent.',
+      result: 'A reusable motion language for social campaigns, intros and branded content.',
+      deliverables: 'Motion system;Title cards;Transitions;Social formats',
+      cover: 'images/video/motion-graphics/cover.svg',
+      gallery: [{src:'images/video/motion-graphics/cover.svg',caption:'Motion graphics concept — temporary portfolio presentation'}]
+    }
   ],
-
   'Animation': [
-    /* مثال، انسخه وعدّل: 
     {
-      title: 'اسم المشروع', year: '2026', client: 'اسم العميل',
-      description: 'جملة أو جملتين عن المشروع.',
-      challenge: 'ما المشكلة التي كان لازم تتحل؟',
-      direction: 'الفكرة والاتجاه البصري.',
-      result: 'النتيجة النهائية.',
-      deliverables: 'مخرج 1;مخرج 2;مخرج 3',
-      cover: 'images/video/animation/اسم-المشروع/cover.jpg',
-      video: 'videos/video/animation/اسم-المشروع.mp4',   // اختياري: يشتغل عند تمرير الماوس
-      poster: 'images/video/animation/اسم-المشروع/poster.jpg',
-      gallery: [
-        { src: 'images/video/animation/اسم-المشروع/01.jpg', caption: 'وصف' }
-      ]
-    },
-    */
+      title: 'FRAME / 03 — Animation', year: '2026', client: 'Portfolio Concept',
+      description: 'A clean animation study focused on shape choreography, timing and visual rhythm.',
+      challenge: 'Build an animation language that feels intentional at every frame.',
+      direction: 'Simple forms, strong contrast and smooth easing with editorial restraint.',
+      result: 'A flexible animation direction for logos, explainers and branded social content.',
+      deliverables: 'Animation direction;Logo motion;Scene transitions;Export formats',
+      cover: 'images/video/animation/cover.svg',
+      gallery: [{src:'images/video/animation/cover.svg',caption:'Animation concept — temporary portfolio presentation'}]
+    }
   ],
-
   'Reels': [
-    /* مثال، انسخه وعدّل: 
     {
-      title: 'اسم المشروع', year: '2026', client: 'اسم العميل',
-      description: 'جملة أو جملتين عن المشروع.',
-      challenge: 'ما المشكلة التي كان لازم تتحل؟',
-      direction: 'الفكرة والاتجاه البصري.',
-      result: 'النتيجة النهائية.',
-      deliverables: 'مخرج 1;مخرج 2;مخرج 3',
-      cover: 'images/video/reels/اسم-المشروع/cover.jpg',
-      video: 'videos/video/reels/اسم-المشروع.mp4',   // اختياري: يشتغل عند تمرير الماوس
-      poster: 'images/video/reels/اسم-المشروع/poster.jpg',
-      gallery: [
-        { src: 'images/video/reels/اسم-المشروع/01.jpg', caption: 'وصف' }
-      ]
-    },
-    */
+      title: 'LOOP / 04 — Reels', year: '2026', client: 'Portfolio Concept',
+      description: 'A vertical-first reel concept designed around a fast hook, visual payoff and clean end frame.',
+      challenge: 'Make short-form content feel premium while keeping the first seconds immediately readable.',
+      direction: 'Fast pacing, oversized type and strong visual beats for mobile viewing.',
+      result: 'A repeatable reel format for products, brands and promotional campaigns.',
+      deliverables: '9:16 reel;Cover frame;Caption layout;Short cutdown',
+      cover: 'images/video/reels/cover.svg',
+      gallery: [{src:'images/video/reels/cover.svg',caption:'Reels concept — temporary portfolio presentation'}]
+    }
   ],
-
   'Commercial': [
-    /* مثال، انسخه وعدّل: 
     {
-      title: 'اسم المشروع', year: '2026', client: 'اسم العميل',
-      description: 'جملة أو جملتين عن المشروع.',
-      challenge: 'ما المشكلة التي كان لازم تتحل؟',
-      direction: 'الفكرة والاتجاه البصري.',
-      result: 'النتيجة النهائية.',
-      deliverables: 'مخرج 1;مخرج 2;مخرج 3',
-      cover: 'images/video/commercial/اسم-المشروع/cover.jpg',
-      video: 'videos/video/commercial/اسم-المشروع.mp4',   // اختياري: يشتغل عند تمرير الماوس
-      poster: 'images/video/commercial/اسم-المشروع/poster.jpg',
-      gallery: [
-        { src: 'images/video/commercial/اسم-المشروع/01.jpg', caption: 'وصف' }
-      ]
-    },
-    */
+      title: 'CUT / 01 — Commercial', year: '2026', client: 'Portfolio Concept',
+      description: 'A commercial direction built around product-first composition, impact frames and rhythmic editing.',
+      challenge: 'Give a product campaign a premium visual signature while keeping the message immediate.',
+      direction: 'Hero frames, graphic transitions, sound-driven cuts and controlled contrast.',
+      result: 'A polished commercial concept suitable for social, digital ads and campaign cutdowns.',
+      deliverables: 'Hero commercial;15s cutdown;6s bumper;Social exports',
+      cover: 'images/video/commercial/cover.svg',
+      gallery: [{src:'images/video/commercial/cover.svg',caption:'Commercial concept — temporary portfolio presentation'}]
+    }
   ]
 };

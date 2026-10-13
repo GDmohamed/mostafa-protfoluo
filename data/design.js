@@ -406,6 +406,55 @@ window.DESIGN_PROJECTS = {
 
   'Social Media': [
     {
+      "title": "Milano Footwear: Social Campaign",
+      "year": "2026",
+      "client": "Milano Footwear",
+      "description": "A social media campaign for Milano footwear brand: concept and visual direction across nine posts for Nike, Puma and Asics, with Arabic copywriting and a consistent red identity.",
+      "cover": "images/design/social-media/milano-campaign/cover.jpg",
+      "gallery": [
+        {
+          "src": "images/design/social-media/milano-campaign/cover.jpg",
+          "caption": "Campaign overview"
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/01.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/02.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/03.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/04.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/05.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/06.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/07.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/08.jpg",
+          "half": true
+        },
+        {
+          "src": "images/design/social-media/milano-campaign/09.jpg",
+          "half": true
+        }
+      ]
+    },
+    {
       "title": "Dental Clinic: Social Media Posts",
       "year": "2026",
       "cover": "images/design/social-media/1/behance_242492379_01.jpg",
